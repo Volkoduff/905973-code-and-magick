@@ -10,6 +10,7 @@
 <body>
 
 <header>
+
   <svg style="display: none;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 62
         86">
     <g id="wizard">
@@ -180,29 +181,7 @@
   <p class="setup-similar-label">Петр Петров</p>
 </div>
 </template>
-<script>
-  var fireballSize = 22;
-  var wizardSpeed = 3;
-  var wizardWidth = 90;
-  var PROPORTION_WIDTH = 1.333
-  var COEFFICIENT_HEIGHT = 2 / 3
-
-  function getWizardHeight() {
-      return PROPORTION_WIDTH * wizardWidth;
-  }
-
-  function getFireballSpeed(left) {
-      return left ? 5 : 2;
-  }
-
-  function getWizardX(width) {
-      return (width - wizardWidth) / 2;
-  }
-
-  function getWizardY(height) {
-      return (height - getWizardHeight()) * COEFFICIENT_HEIGHT;
-  }
-</script>
+<script src="js/stat.js"></script>
 <script src="js/game.js"></script>
 
 </body>
