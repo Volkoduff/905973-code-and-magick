@@ -54,7 +54,6 @@
       return maxElement;
   };
 
-
   window.renderStatistics = function(ctx, players, times) {
       renderCloud(ctx, CLOUD_X + GAP, CLOUD_Y + GAP, 'rgba(0, 0, 0, 0.7)')
       renderCloud(ctx, CLOUD_X, CLOUD_Y, '#fff')
@@ -77,12 +76,13 @@
               ctx.fillStyle = colorsArr[getRandomNum()]
 
           }
-          var maxTime = getMaxElement(times);
 
-          ctx.fillText(players[i], BAR_X + BAR_TRAVEL * i, NAME_Y);
+          var maxTime = getMaxElement(times);
           ctx.fillRect(BAR_X + BAR_TRAVEL * i, BAR_Y, BAR_WIDTH, -BAR_HEIGTH * times[i] / maxTime);
+
+          ctx.fillStyle = '#000';
+          ctx.fillText(players[i], BAR_X + BAR_TRAVEL * i, NAME_Y);
           ctx.fillText(Math.ceil(times[i]), BAR_X + BAR_TRAVEL * i, BAR_Y - GAP - (BAR_HEIGTH * times[i] / maxTime));
 
       }
-
   };
