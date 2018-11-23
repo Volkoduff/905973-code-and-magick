@@ -30,14 +30,11 @@
   var GAP = 10;
   var TEXT_GAP = 25;
   var BAR_WIDTH = 40;
-  var BAR_HEIGTH = 100;
+  var BAR_HEIGTH = 160;
   var BAR_X = 130;
   var BAR_Y = 250;
   var NAME_Y = 265;
   var NUMBERS_GAP = 65;
-
-
-
   var BAR_DISTANCE = 50;
   var BAR_TRAVEL = BAR_DISTANCE + BAR_WIDTH
 
@@ -68,19 +65,24 @@
       ctx.fillText('Ура вы победили!', TEXT_X, TEXT_Y);
       ctx.fillText('Список результатов:', TEXT_X, TEXT_Y + TEXT_GAP);
 
-
       for (var i = 0; i < players.length; i++) {
           if (players[i] === 'Вы') {
               ctx.fillStyle = 'rgba(255, 0, 0, 1)';
           } else {
-              ctx.fillStyle = 'rgba(34, 29, 255, 0.8)';
+              var colorsArr = ['rgba(50, 60, 255, 1)', 'rgba(50, 150, 255, 1)', 'rgba(50, 100, 255, 1)', 'rgba(50, 200, 255, 1)', 'rgba(50, 250, 255, 1)'];
+
+              function getRandomNum() {
+                  return Math.floor(Math.random() * 4)
+              }
+              ctx.fillStyle = colorsArr[getRandomNum()]
+
           }
           var maxTime = getMaxElement(times);
-          ctx.fillText(Math.ceil(times[i]), BAR_X + BAR_TRAVEL * i, BAR_Y - GAP - (BAR_HEIGTH * times[i] / maxTime));
+
           ctx.fillText(players[i], BAR_X + BAR_TRAVEL * i, NAME_Y);
           ctx.fillRect(BAR_X + BAR_TRAVEL * i, BAR_Y, BAR_WIDTH, -BAR_HEIGTH * times[i] / maxTime);
+          ctx.fillText(Math.ceil(times[i]), BAR_X + BAR_TRAVEL * i, BAR_Y - GAP - (BAR_HEIGTH * times[i] / maxTime));
 
       }
-
 
   };
