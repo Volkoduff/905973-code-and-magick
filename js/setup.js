@@ -100,18 +100,6 @@ saveButton.addEventListener('keydown', function(evt) {
 setupClose.addEventListener('click', function() {
   closePopup();
 })
-setupClose.addEventListener('focus', function() {
-  if (evt.keyCode === ENTER_CODE) {
-    closePopup();
-  }
-})
-setupClose.addEventListener('focus', function(evt) {
-  setupClose.addEventListener('keydown', function(evt) {
-    if (evt.keyCode === ENTER_CODE) {
-      closePopup();
-    }
-  });
-})
 
 wizardCoat.addEventListener('click', function() {
   var randomCoat = getRandomElement(WIZARD_COAT);
