@@ -101,6 +101,17 @@ setupClose.addEventListener('click', function() {
   closePopup();
 })
 
+var exitSetupByEnter = function(evt) {
+  if (evt.keyCode === ENTER_CODE) {
+    closePopup();
+    setupClose.removeEventListener('keydown', exitSetupByEnter);
+  }
+}
+
+setupClose.addEventListener('focus', function(evt) {
+  setupClose.addEventListener('keydown', exitSetupByEnter);
+})
+
 wizardCoat.addEventListener('click', function() {
   var randomCoat = getRandomElement(WIZARD_COAT);
   wizardCoat.style.fill = randomCoat;
