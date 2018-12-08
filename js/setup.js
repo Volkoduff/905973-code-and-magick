@@ -67,14 +67,11 @@ var openPopup = function() {
   });
 }
 var onPopupEscPress = function(evt) {
-  if (evt.keyCode === 27) {
+  if (evt.keyCode === ESC_CODE) {
     closePopup();
   }
 };
-var openPopup = function() {
-  setupWindow.classList.remove('hidden');
-  document.addEventListener('keydown', onPopupEscPress);
-};
+
 var closePopup = function() {
   setupWindow.classList.add('hidden');
   document.removeEventListener('keydown', onPopupEscPress);
