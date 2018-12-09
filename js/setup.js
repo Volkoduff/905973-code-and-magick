@@ -98,6 +98,12 @@ setupClose.addEventListener('click', function() {
   closePopup();
 })
 
+inputDialog.addEventListener('keydown', function (evt) {
+  if(closePopup){
+    evt.stopPropagation();
+  }
+})
+
 var exitSetupByEnter = function(evt) {
   if (evt.keyCode === ENTER_CODE) {
     closePopup();
