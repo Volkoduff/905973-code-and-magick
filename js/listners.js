@@ -1,6 +1,12 @@
  'use strict';
 
  (function() {
+
+  var Сode = {
+    ESC: 27,
+    ENTER: 13
+  }
+
    var setupClose = document.querySelector('.setup-close');
    var setupOpen = document.querySelector('.setup-open');
    var setupWindow = document.querySelector('.setup');
@@ -11,16 +17,6 @@
    var wizardCoat = setupWizard.querySelector('.wizard-coat')
    var wizardEyes = setupWizard.querySelector('.wizard-eyes')
    var wizardFireBall = document.querySelector('.setup-fireball-wrap')
-
-   var openPopup = function() {
-     setupWindow.classList.remove('hidden')
-     document.addEventListener('keydown', function(evt) {
-       if (evt.keyCode === ESC_CODE) {
-         setupWindow.classList.add('hidden');
-
-       }
-     });
-   }
 
    var onPopupEscPress = function(evt) {
      if (evt.keyCode === 27) {
@@ -36,24 +32,24 @@
    var closePopup = function() {
      setupWindow.classList.add('hidden');
      document.removeEventListener('keydown', onPopupEscPress);
-     setupWindow.style = 'top: 80px; left: 50%';
+     // setupWindow.style = 'top: 80px; left: 50%';
    };
 
    setupOpen.addEventListener('click', function() {
      setupWindow.classList.remove('hidden');
      document.addEventListener('keydown', function(evt) {
-       if (evt.keyCode === ESC_CODE) {
+       if (evt.keyCode === Сode.ESC) {
          closePopup();
        }
      });
    })
    setupOpenIcon.addEventListener('keydown', function(evt) {
-     if (evt.keyCode === ENTER_CODE) {
+     if (evt.keyCode === Сode.ENTER) {
        openPopup();
      }
    });
    saveButton.addEventListener('keydown', function(evt) {
-     if (evt.keyCode === ENTER_CODE) {
+     if (evt.keyCode === Сode.ENTER) {
        openPopup();
      }
    });
@@ -62,7 +58,7 @@
    })
 
    var exitSetupByEnter = function(evt) {
-     if (evt.keyCode === ENTER_CODE) {
+     if (evt.keyCode === Сode.ENTER) {
        closePopup();
        setupClose.removeEventListener('keydown', exitSetupByEnter);
      }
