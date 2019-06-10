@@ -1,3 +1,5 @@
+ 'use strict';
+
  (function() {
    var setupClose = document.querySelector('.setup-close');
    var setupOpen = document.querySelector('.setup-open');

@@ -1,3 +1,5 @@
+'use strict';
+
 (function() {
   var fireballSize = 22;
   var wizardSpeed = 3;

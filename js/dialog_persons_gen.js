@@ -1,36 +1,31 @@
 (function() {
+  var LOAD_WIZARDS = 4;
   var userDialog = document.querySelector('.setup');
   var similarListElement = userDialog.querySelector('.setup-similar-list');
   var similarWizardTemplate = document.querySelector('#similar-wizard-template')
     .content
     .querySelector('.setup-similar-item');
 
-  var wizards = [];
-
-  for (var i = 0; i <= 3; i++) {
-    var randomNameSurname = window.utilities.getRandomElement(WIZARD_NAMES) + ' ' + window.utilities.getRandomElement(WIZARD_SURNAMES);
-    var randomCoat = window.utilities.getRandomElement(WIZARD_COAT);
-    var randomEyes = window.utilities.getRandomElement(WIZARD_EYES);
-    var randomFireBall = window.utilities.getRandomElement(WIZARD_FIRE_BALL);
-    wizardObj = {
-      name: randomNameSurname,
-      coatColor: randomCoat,
-      eyesColor: randomEyes
-    };
-    wizards.push(wizardObj);
-  };
+  window.backend.load(function(serverData) {
+    var wizards = serverData;
+    wizardsApend(wizards);
+  });
 
   var renderWizard = function(wizard) {
     var wizardElement = similarWizardTemplate.cloneNode(true);
     wizardElement.querySelector('.setup-similar-label').textContent = wizard.name;
-    wizardElement.querySelector('.wizard-coat').style.fill = wizard.coatColor;
-    wizardElement.querySelector('.wizard-eyes').style.fill = wizard.eyesColor;
+    wizardElement.querySelector('.wizard-coat').style.fill = wizard.colorCoat;
+    wizardElement.querySelector('.wizard-eyes').style.fill = wizard.colorEyes;
     return wizardElement;
   }
-  var fragment = document.createDocumentFragment();
-  for (var i = 0; i < wizards.length; i++) {
-    fragment.appendChild(renderWizard(wizards[i]));
+
+  var wizardsApend = function(wizards) {
+    var fragment = document.createDocumentFragment();
+    for (var i = 0; i < LOAD_WIZARDS; i++) {
+      fragment.appendChild(renderWizard(wizards[i]))
+    }
+    similarListElement.appendChild(fragment);
+    userDialog.querySelector('.setup-similar').classList.remove('hidden');
   }
-  similarListElement.appendChild(fragment);
-  userDialog.querySelector('.setup-similar').classList.remove('hidden');
+
 })()
