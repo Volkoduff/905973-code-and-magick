@@ -3,17 +3,17 @@
 (function() {
   var form = document.querySelector('.setup-wizard-form');
   var userDialog = document.querySelector('.setup');
-  var URL = 'https://js.dump.academy/code-and-magick/data';
+  var DOWNLOAD_URL = 'https://js.dump.academy/code-and-magick/data';
+  var UPLOAD_URL = 'https://js.dump.academy/code-and-magick';
 
   // отправка данных
   var save = function(data, onSuccess) {
-    var URL = 'https://js.dump.academy/code-and-magick';
     var xhr = new XMLHttpRequest();
     xhr.responseType = 'json';
     xhr.addEventListener('load', function() {
       onSuccess(xhr.response);
     })
-    xhr.open('POST', URL);
+    xhr.open('POST', UPLOAD_URL);
     xhr.send(data);
   }
 
@@ -35,7 +35,7 @@
         onError('Cтатус ответа: ' + xhr.status + ' ' + xhr.statusText);
       }
     })
-    xhr.open('GET', URL);
+    xhr.open('GET', DOWNLOAD_URL);
     xhr.send();
   }
 
