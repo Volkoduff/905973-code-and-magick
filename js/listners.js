@@ -67,15 +67,15 @@
      setupClose.addEventListener('keydown', exitSetupByEnter);
    })
    wizardCoat.addEventListener('click', function() {
-     var randomCoat = window.utilities.getRandomElement(WIZARD_COAT);
+     var randomCoat = window.utilities.getRandomElement(window.constants.WIZARD_COAT);
      wizardCoat.style.fill = randomCoat;
    })
    wizardEyes.addEventListener('click', function() {
-     var randomEyes = window.utilities.getRandomElement(WIZARD_EYES);
+     var randomEyes = window.utilities.getRandomElement(window.constants.WIZARD_EYES);
      wizardEyes.style.fill = randomEyes;
    })
    wizardFireBall.addEventListener('click', function() {
-     var randomFireBall = window.utilities.getRandomElement(WIZARD_FIRE_BALL);
+     var randomFireBall = window.utilities.getRandomElement(window.constants.WIZARD_FIRE_BALL);
      wizardFireBall.style.backgroundColor = randomFireBall;
    })
  })()
